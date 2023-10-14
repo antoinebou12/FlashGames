@@ -4,36 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Load SWF with Ruffle</title>
+    <!-- Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+
+<div class="bg-white p-8 rounded-lg shadow-md w-3/4">
     <!-- Dropdown for selecting SWF files -->
-    <select id="swfSelector">
-        <option value="https://github.com/antoinebou12/FlashGames/raw/main/tag.swf">Tag</option>
-        <option value="https://github.com/antoinebou12/FlashGames/raw/main/ricochet kill.swf">Ricochet Kill</option>
-        <option value="https://github.com/antoinebou12/FlashGames/raw/main/jeux.swf">Ballon</option>
-    </select>
-    <button onclick="loadSWF()">Load SWF</button>
+    <div class="mb-4">
+        <label for="swfSelector" class="block text-gray-700 font-medium mb-2">Select a Game:</label>
+        <select id="swfSelector" class="border rounded w-full p-2">
+            <option value="https://antoinebou12.github.io/FlashGames/tag.swf">Tag</option>
+            <option value="https://antoinebou12.github.io/FlashGames/ricochet kill.swf">Ricochet Kill</option>
+            <option value="https://antoinebou12.github.io/FlashGames/jeux.swf">Ballon</option>
+        </select>
+    </div>
+    <button onclick="loadSWF()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Load SWF</button>
 
     <!-- Container for the SWF -->
-    <div id="swfContainer"></div>
+    <div id="swfContainer" class="mt-4"></div>
+</div>
 
-    <!-- Ruffle JS and initialization -->
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <script>
-        function loadSWF() {
-            // Remove the previous player if it exists
-            const existingPlayer = document.querySelector('.ruffle-player');
-            if (existingPlayer) existingPlayer.remove();
+<!-- Ruffle JS and initialization -->
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<script>
+    function loadSWF() {
+        // Remove the previous player if it exists
+        const existingPlayer = document.querySelector('.ruffle-player');
+        if (existingPlayer) existingPlayer.remove();
 
-            const swfPath = document.getElementById("swfSelector").value;
-            const container = document.getElementById("swfContainer");
+        const swfPath = document.getElementById("swfSelector").value;
+        const container = document.getElementById("swfContainer");
 
-            // Use Ruffle's API to load the selected SWF
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            container.appendChild(player);
-            player.load(swfPath);
-        }
-    </script>
+        // Use Ruffle's API to load the selected SWF
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        container.appendChild(player);
+        player.load(swfPath);
+    }
+</script>
 </body>
 </html>
