@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load SWF with Ruffle</title>
+</head>
+<body>
+    <!-- Dropdown for selecting SWF files -->
+    <select id="swfSelector">
+        <option value="movie1.swf">Movie 1</option>
+        <option value="movie2.swf">Movie 2</option>
+        <option value="movie3.swf">Movie 3</option>
+    </select>
+    <button onclick="loadSWF()">Load SWF</button>
+
+    <!-- Container for the SWF -->
+    <div id="swfContainer"></div>
+
+    <!-- Ruffle JS and initialization -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        function loadSWF() {
+            // Remove the previous player if it exists
+            const existingPlayer = document.querySelector('.ruffle-player');
+            if (existingPlayer) existingPlayer.remove();
+
+            const swfPath = document.getElementById("swfSelector").value;
+            const container = document.getElementById("swfContainer");
+
+            // Use Ruffle's API to load the selected SWF
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            player.load(swfPath);
+            container.appendChild(player);
+        }
+    </script>
+</body>
+</html>
