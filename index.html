@@ -31,8 +31,8 @@
             // Use Ruffle's API to load the selected SWF
             const ruffle = window.RufflePlayer.newest();
             const player = ruffle.createPlayer();
-            player.load(swfPath);
             container.appendChild(player);
+            player.load(swfPath);
         }
     </script>
 </body>
