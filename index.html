@@ -33,18 +33,20 @@
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
         function loadSWF() {
-            // Remove the previous player if it exists
-            const existingPlayer = document.querySelector('.ruffle-player');
-            if (existingPlayer) existingPlayer.remove();
-
             const swfPath = document.getElementById("swfSelector").value;
             const container = document.getElementById("swfContainer");
-
-            // Use Ruffle's API to load the selected SWF
-            const ruffle = window.RufflePlayer.newest();
-            const player = ruffle.createPlayer();
-            container.appendChild(player);
-            player.load(swfPath);
+        
+            // Check if there's an existing Ruffle player
+            let player = document.querySelector('.ruffle-player');
+            if (player) {
+                player.load(swfPath);
+            } else {6
+                // If there's no existing Ruffle player, create a new one
+                const ruffle = window.RufflePlayer.newest();
+                player = ruffle.createPlayer();
+                container.appendChild(player);
+                player.load(swfPath);
+            }
         }
     </script>
 
