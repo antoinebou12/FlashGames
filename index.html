@@ -16,11 +16,11 @@
         <div class="flex justify-between items-center">
             <label for="swfSelector" class="text-gray-700 font-medium">Select a Game:</label>
             <select id="swfSelector" class="border rounded p-2">
-                <option value="https://antoinebou12.github.io/FlashGames/tag.swf">Tag</option>
-                <option value="https://antoinebou12.github.io/FlashGames/ricochet kill.swf">Ricochet Kill</option>
-                <option value="https://antoinebou12.github.io/FlashGames/jeux.swf">Ballon</option>
+                <option value="tag">Tag</option>
+                <option value="ricochet_kill">Ricochet Kill</option>
+                <option value="ballon">Ballon</option>
             </select>
-            <button onclick="loadSWF()" class="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Load SWF</button>
+            <button onclick="updateHash()" class="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Load SWF</button>
         </div>
     </div>
 
@@ -32,20 +32,39 @@
     <!-- Ruffle JS and initialization -->
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
-        function loadSWF() {
-            const swfPath = document.getElementById("swfSelector").value;
+        const games = {
+            "tag": "https://antoinebou12.github.io/FlashGames/tag.swf",
+            "ricochet_kill": "https://antoinebou12.github.io/FlashGames/ricochet kill.swf",
+            "ballon": "https://antoinebou12.github.io/FlashGames/jeux.swf"
+        };
+
+        function loadSWF(swfPath) {
             const container = document.getElementById("swfContainer");
-        
-            // Check if there's an existing Ruffle player
-            let player = document.querySelector('.ruffle-player');
-            if (player) {
-                player.load(swfPath);
-            } else {6
-                // If there's no existing Ruffle player, create a new one
-                const ruffle = window.RufflePlayer.newest();
-                player = ruffle.createPlayer();
-                container.appendChild(player);
-                player.load(swfPath);
+            container.innerHTML = ''; // Clear the container
+
+            // Create a new Ruffle player
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            container.appendChild(player);
+            player.load(swfPath);
+        }
+
+        function updateHash() {
+            const selectedGame = document.getElementById("swfSelector").value;
+            window.location.hash = selectedGame;
+            loadSWF(games[selectedGame]);
+        }
+
+        window.onload = function() {
+            const gameTag = window.location.hash.substring(1);
+            const selector = document.getElementById("swfSelector");
+            
+            if (games[gameTag]) {
+                selector.value = gameTag;
+                loadSWF(games[gameTag]);
+            } else if (selector.options.length > 0) {
+                // Load the first game if no hash is provided
+                loadSWF(games[selector.options[0].value]);
             }
         }
     </script>
