@@ -26,10 +26,6 @@ To ensure these games remain playable even after the discontinuation of Flash, t
 
 To try out Ruffle, visit the [official web demo page](https://ruffle.rs/demo/).
 
-## Contributing
-
-Feel free to contribute to this nostalgic project! If you have a Flash game from our shared past that's missing here, submit a pull request or open an issue.
-
 ## Credits
 
 A big shoutout to all the Flash game developers who made our childhood so memorable. Your creativity and innovation brought joy to many!
