@@ -30,7 +30,7 @@
     <div class="bg-white shadow-md rounded-lg mx-4 md:mx-auto max-w-5xl mt-4 p-3 transform transition-all duration-500 hover:shadow-xl">
         <div class="flex flex-col md:flex-row justify-between items-center gap-3">
             <div class="w-full md:w-auto">
-                <label for="swfSelector" class="block text-gray-700 font-medium mb-2">
+                <label for="swfSelector" class="block text-gray-700 text-sm font-medium mb-2">
                     <i class="fas fa-list-ul mr-2"></i>Select a Game:
                 </label>
                 <select id="swfSelector" onchange="updateHash()" class="w-48 border border-gray-300 rounded-lg p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
@@ -69,22 +69,6 @@
     <!-- Game description bar -->
     <div id="gameDescriptionBar" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 mx-4 md:mx-auto max-w-6xl rounded-b-lg -mt-3 shadow-md">
         <p id="currentGameDescription" class="text-center text-sm md:text-base">Select a game to start playing!</p>
-    </div>
-
-    <!-- Instructions panel -->
-    <div class="bg-white rounded-lg shadow-md mx-4 md:mx-auto max-w-6xl my-4 p-4">
-        <h2 class="text-xl font-bold text-gray-800 mb-4">
-            <i class="fas fa-info-circle mr-2 text-blue-500"></i>How to Play
-        </h2>
-        <p class="text-gray-700 mb-3">These Flash games are powered by <a href="https://ruffle.rs/" target="_blank" class="text-blue-600 hover:underline">Ruffle</a>, a Flash Player emulator that brings these classics back to life in modern browsers.</p>
-        <div class="bg-blue-50 p-4 rounded-lg">
-            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                <li>Select a game from the dropdown menu above</li>
-                <li>Click "Load Game" to start playing</li>
-                <li>Most games use keyboard arrows and spacebar</li>
-                <li>If a game doesn't load correctly, try refreshing the page</li>
-            </ul>
-        </div>
     </div>
 
     <!-- Footer -->
