@@ -93,5 +93,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  <i>Dedicated to my 12-year-old self and everyone who spent countless hours enjoying Flash games in the 2000s and 2010s.</i>
+  <i>Dedicated to my 12-year-old self and everyone who spent countless hours enjoying Flash games in the 2010s.</i>
 </p>
